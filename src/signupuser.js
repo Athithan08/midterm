@@ -18,11 +18,27 @@ export default function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      `Name: ${signUpUserData.firstname}, lastName: ${signUpUserData.lastname},username: ${signUpUserData.username} email: ${signUpUserData.email},  password: ${signUpUserData.password}, confirmpassword: ${signUpUserData.confirmpassword}, `
-    
 
-      );
+
+    if (
+        signUpUserData.firstname.trim() === '' ||
+        signUpUserData.lastname.trim() === '' ||
+        signUpUserData.username.trim() === '' ||
+        signUpUserData.email.trim() === '' ||
+        signUpUserData.password.trim() === '' ||
+        signUpUserData.confirmpassword.trim() === ''
+      ) {
+        alert('Please fill out all fields');
+      } else if (signUpUserData.password !== signUpUserData.confirmpassword) {
+        alert('Passwords do not match');
+      } else {
+        alert(
+          `Name: ${signUpUserData.firstname}, lastName: ${signUpUserData.lastname}, username: ${signUpUserData.username}, email: ${signUpUserData.email}, password: ${signUpUserData.password}, confirmpassword: ${signUpUserData.confirmpassword}`
+        );
+    
+        console.log(signUpUserData);
+      }
+
   };
 
   return (
